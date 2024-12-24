@@ -13,8 +13,6 @@ class Students:
             self.scoreStudents.append(randomScore)
         # DAtaFrame about scoreStudents
         self.ds = Series(data=self.scoreStudents,index=["Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"])
-        # # max score
-        # return maxScore
     #mean 
     def averageScore(self): 
         idMax = self.ds.idxmax()
