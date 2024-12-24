@@ -2,17 +2,25 @@ from pandas import  Series,DataFrame
 import numpy as np
 import random
 import matplotlib.pyplot as mtb
+import math
 
 class Students:
     # instance
     def __init__(self):
         # Generate "random numbers" (score like)
         self.scoreStudents = []
+        self.scoreStudents2 = []
+        # score one
         while len(self.scoreStudents) < 10 :
             randomScore = random.randint(0,100)
             self.scoreStudents.append(randomScore)
         # DAtaFrame about scoreStudents
         self.ds = Series(data=self.scoreStudents,index=["Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"])
+        # score two
+        while len(self.scoreStudents2) < 10 :
+            randomScore2 =random.randint(40,60)
+            self.scoreStudents2.append(randomScore2)
+        self.ds2 = Series(data=self.scoreStudents2,index=["Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"])
     #mean 
     def averageScore(self): 
         idMax = self.ds.idxmax()
@@ -37,7 +45,7 @@ class Students:
         else:
             print(f"the student decrement your score %{np.round(diference1,3)}")
     
-    # return the hight values obtained around curserd xd
+    # return the hight values obtained around the course xd
     def mostHighScore(self):
 
         sortScore = self.ds.sort_values()
@@ -46,6 +54,10 @@ class Students:
         print(highFive)
         return  highFive
 
+    def ajustingScore(self):
+        ajust = (80 - self.ds2.mean())
+        self.ds = self.ds + ajust
+        return self.ds
 
 
 
@@ -58,8 +70,26 @@ def manipulingDataStudents():
     # print(student1.averageScore())
     # print(student1.secodHalfAverageScore())
     # student1.diference()
-    student1.mostHighScore()
+    # # student1.mostHighScore()
+    # print(student1.ds)
+    # student1.ajustingScore()
+    # print(student1.ds)
     
-    
+
+
+
+
 manipulingDataStudents()
 
+
+def ss():
+    list =[]
+    while len(list) < 10 :
+        rr = random.randint(0,100)
+        list.append(rr)
+    
+    dd = Series(data=list,index=['a','b','c','d','e','f','g','h','i','j'])
+    return dd
+        
+    
+print(ss())
