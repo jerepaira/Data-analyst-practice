@@ -1,4 +1,5 @@
-from pandas import  Series,DataFrame 
+from pandas import  Series,DataFrame
+import pandas as pd 
 import numpy as np
 import random
 import matplotlib.pyplot as mtb
@@ -21,6 +22,8 @@ class Students:
             randomScore2 =random.randint(40,60)
             self.scoreStudents2.append(randomScore2)
         self.ds2 = Series(data=self.scoreStudents2,index=["Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"])
+        scoreStudents3 = np.random.randint(0,100,10)
+        self.ds3 = Series(data=scoreStudents3, index=["Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"])
     #mean 
     def averageScore(self): 
         idMax = self.ds.idxmax()
@@ -58,6 +61,16 @@ class Students:
         ajust = (80 - self.ds2.mean())
         self.ds = self.ds + ajust
         return self.ds
+    
+    def modificateBaseSerie(self):
+        self.ds3 = self.ds3.div(10)
+        print(self.ds3)
+        # self.ds3 = self.ds3.astype(str)
+        # self.ds3 = self.ds3.astype(pd.StringDtype())
+        self.ds3 = self.ds3.astype(np.int8)
+        return self.ds3
+        
+
 
 
 
@@ -72,8 +85,8 @@ def manipulingDataStudents():
     # student1.diference()
     # # student1.mostHighScore()
     # print(student1.ds)
-    # student1.ajustingScore()
-    # print(student1.ds)
+    
+    print(student1.modificateBaseSerie())
     
 
 
@@ -90,6 +103,5 @@ def ss():
     
     dd = Series(data=list,index=['a','b','c','d','e','f','g','h','i','j'])
     return dd
-        
     
-print(ss())
+    
