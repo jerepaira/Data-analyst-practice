@@ -2,7 +2,7 @@ from pandas import  Series,DataFrame
 import pandas as pd 
 import numpy as np
 import random
-import matplotlib.pyplot as mtb
+import matplotlib.pyplot as plt
 import math
 
 class Students:
@@ -70,10 +70,6 @@ class Students:
         self.ds3 = self.ds3.astype(np.int8)
         return self.ds3
         
-
-
-
-
 # 1th Question:
 # What is the student’s average test score for the entire year?
 def manipulingDataStudents():
@@ -86,12 +82,8 @@ def manipulingDataStudents():
     # # student1.mostHighScore()
     # print(student1.ds)
     
-    print(student1.modificateBaseSerie())
+    # print(student1.modificateBaseSerie())
     
-
-
-
-
 manipulingDataStudents()
 
 
@@ -105,3 +97,30 @@ def ss():
     return dd
     
     
+# 4 exercise (i change the  line becouse the previous code is a shit )
+
+class descriptive():
+    def __init__(self):
+        scoreSerie = np.random.normal(0,100,100_000)
+        self.descriptiveSerie = Series(data=scoreSerie,dtype=np.float64)
+   
+        
+    def statistic(self):
+        dates =self.descriptiveSerie.describe()
+        idMin=self.descriptiveSerie.loc[self.descriptiveSerie == self.descriptiveSerie.min()]
+        plusId = idMin.max()*5
+        return dates,plusId
+    
+    
+    def graph(self):
+        self.descriptiveSerie.plot(kind='hist', bins=60, alpha=0.7, color='red')
+        plt.title('Histogram of Descriptive Series')
+        plt.xlabel('Value')
+        plt.ylabel('Frequency')
+        plt.show()
+        
+
+
+a= descriptive()
+
+print(a.statistic())
