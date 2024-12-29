@@ -120,7 +120,6 @@ class descriptive():
         plt.show()
         
 
+a=descriptive()
 
-a= descriptive()
-
-print(a.statistic())
+print(a.graph())
